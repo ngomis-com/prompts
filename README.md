@@ -13,6 +13,7 @@ This repository is a comprehensive collection of prompts designed to assist with
 *   ✍️ Edit (General Editing Prompts)
 *   💰 Funding Proposal
 *   📢 Grant Announcement
+*   ⚖️ Grants Fitment Assessment
 *   🧠 Knowledge Base
 *   📍 Locations
 *   🛠️ Main System Instruction
@@ -21,6 +22,7 @@ This repository is a comprehensive collection of prompts designed to assist with
 *   📈 Organizational Financial Report
 *   📉 Project Financial Report
 *   📋 Project Report
+*   📜 Previous Grants
 *   🏗️ Projects
 *   🌍 Social Impact Areas
 *   🤝 Stakeholders
