@@ -1,0 +1,21 @@
+{
+  "name": "ngo-mis-prompts",
+  "version": "0.0.1",
+  "description": "A collection of base meta prompts for generating documents for NGOs and MIS systems.",
+  "main": "",
+  "scripts": {},
+  "keywords": [
+    "ngo",
+    "mis",
+    "llm",
+    "prompts",
+    "meta-prompts",
+    "reporting"
+  ],
+  "author": "ngomis-com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ngomis-com/prompts/issues"
+  },
+  "homepage": "https://github.com/ngomis-com/prompts#readme"
+}
