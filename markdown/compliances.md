@@ -29,9 +29,16 @@ You will receive the following details corresponding to the `ComplianceContext` 
 *   `{fcra_validity_date}`: (e.g., "[YYYY-MM-DD]")
 *   `{tax_id}`: Any other relevant tax ID.
 *   `{key_filings}`: Dictionary of other key filings (e.g., `{"80G": "Valid until 2026", "12A": "Registered"}`).
+*   `{board_meetings_held}`: (e.g., 4)
+*   `{board_meeting_dates}`: (e.g., ["2023-04-15", "2023-07-20"])
+*   `{board_meeting_photos_available}`: (e.g., True)
+*   `{audited_statements_availability}`: (e.g., "Signed audited statements for the latest financial year are available on our website.")
+*   `{annual_report_sharing_method}`: (e.g., "Published on our website and shared with key donors via email.")
+*   `{financial_report_sharing_method}`: (e.g., "Available upon request to partners and regulatory bodies.")
+*   `{board_composition_sharing_method}`: (e.g., "Detailed in our annual report and on our website's 'About Us' page.")
 
 **Instructions:**
-1.  **Structure:** Organize the output logically using Markdown headings for major compliance categories (e.g., `## Registration Details`, `## PAN Details`, `## FCRA Registration`, `## Other Key Filings`).
+1.  **Structure:** Organize the output logically using Markdown headings for major compliance categories (e.g., `## Registration Details`, `## PAN Details`, `## FCRA Registration`, `## Other Key Filings`, `## Governance and Transparency`).
 2.  **Content:** List the details clearly under each heading using bullet points.
     *   Format dates as YYYY-MM-DD.
     *   Clearly state status (e.g., "Available", "Not Available", "Registered").
@@ -72,4 +79,13 @@ You will receive the following details corresponding to the `ComplianceContext` 
 ## Other Key Filings
 *   **80G Status:** [80G Status, e.g., Valid until YYYY-MM-DD]
 *   **12A Status:** [12A Status, e.g., Registered]
+
+## Governance and Transparency
+*   **Board Meetings:** {board_meetings_held} meetings were held in the last financial year.
+*   **Meeting Dates:** {board_meeting_dates}
+*   **Board Meeting Photographs:** {board_meeting_photos_available}
+*   **Audited Statements:** {audited_statements_availability}
+*   **Annual Report Sharing:** {annual_report_sharing_method}
+*   **Financial Report Sharing:** {financial_report_sharing_method}
+*   **Board Composition & Remuneration Sharing:** {board_composition_sharing_method}
 ```
