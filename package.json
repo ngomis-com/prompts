@@ -1,6 +1,6 @@
 {
   "name": "ngo-mis-prompts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A collection of base meta prompts for generating documents for NGOs and MIS systems.",
   "main": "",
   "scripts": {},
