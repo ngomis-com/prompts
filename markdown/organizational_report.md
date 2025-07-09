@@ -22,6 +22,8 @@
 
 **Report Structure and Content Generation:**
 
+**IMPORTANT:** This is a multi-year report covering the period from **{start_year}** to **{end_year}**. For each section, ensure the content reflects this by presenting data, narratives, and project information with a clear year-over-year progression. The goal is to show evolution and trends over time, not just a single snapshot.
+
 Use the following context sections to build the full report. For each section, adhere to the specified presentation style and content guidelines.
 
 ---
@@ -73,35 +75,42 @@ Use the following context sections to build the full report. For each section, a
 
 ---
 
-### 5. Our Work: Social Impact and Projects
-**Content:**
-- {impact_areas_section: from_prompt('markdown/social_impact_areas.md')}
+### 5. Our Work: Year-by-Year Review
 **Presentation Style:**
-- **Layout:** For each impact area, use a dedicated sub-section (`###`).
-- **Content:**
-    - **Narrative:** A summary of the challenges and the organization's approach over the period (150-200 words per area).
-    - **Data:** Use "call-out" boxes or info-graphics to highlight cumulative statistics (e.g., "Total beneficiaries reached from {start_year}-{end_year}").
-    - **Image Prompt:** For each impact area, include: `{image: "A powerful, high-impact photo showing the work being done in {impact_area_name}"}`
-    - **Visuals:** The selected photo or a map should be displayed prominently within its respective impact area section.
+- **Overall Structure:** The primary organization of this section is chronological. Create a major sub-section (`###`) for each year from {start_year} to {end_year}.
+- **Content per Year:**
+    - **Yearly Heading:** Start with a clear heading for the year, e.g., `### Year: {year}`.
+    - **Impact Area Breakdown:** Within each year, create a sub-section (`####`) for each social impact area active during that year.
+    - **Narrative & Projects:** For each impact area within a given year, provide a concise narrative (75-100 words) on the activities and list the specific projects `{projects_by_year: from_prompt('markdown/projects.md')}` that were running.
+    - **Visuals:** Include one relevant image per year if possible `{image: "A high-impact photo representing the work done in {year}"}`.
+- **Example Output Structure:**
+  ```markdown
+  ### Year: {start_year}
+
+  #### {Impact Area 1 Name}
+  - Narrative for this impact area in {start_year}...
+  - **Project Alpha:** Key outcomes for the year.
+
+  #### {Impact Area 2 Name}
+  - Narrative for this impact area in {start_year}...
+  - **Project Delta:** Key outcomes for the year.
+
+  ---
+  ### Year: {start_year + 1}
+
+  #### {Impact Area 1 Name}
+  - Narrative for this impact area in {start_year + 1}...
+  - **Project Gamma:** Key outcomes for the year.
+  ```
 
 ---
 
-### 6. Projects at a Glance
-**Content:**
-- {projects_table: from_prompt('markdown/projects.md')}
-**Presentation Style:**
-- **Format:** A well-structured Markdown table showing all major projects during the period.
-- **Design:** Ensure clear headers. Use alternating row colors if possible in the final output rendering for readability.
-- **Highlight:** Add a brief introductory paragraph (75-100 words) explaining the scope and evolution of projects over the years.
-
----
-
-### 7. Financial Summary
+### 6. Financial Summary
 **Content:**
 - {financial_summary: from_prompt('markdown/organizational_financial_report.md')}
 **Presentation Style:**
 - **Layout:**
-    - **Narrative First:** Start with a brief, easy-to-understand summary of the organization's financial health and trends over the period (150-200 words).
+    - **Narrative First:** Start with a brief, easy-to-understand summary of the organization's financial health, explicitly discussing the **trends and evolution** of income and expenditure over the period (150-200 words).
     - **Data Visualization:**
         - Use a **Line Chart** to show income and expenditure trends from {start_year} to {end_year}.
         - Use **stacked Bar Charts** to compare expenditure by program area across the years.
@@ -110,7 +119,7 @@ Use the following context sections to build the full report. For each section, a
 
 ---
 
-### 8. Our People & Governance
+### 7. Our People & Governance
 **Content:**
 - {team_section: from_prompt('markdown/teams.md')}
 **Presentation Style:**
@@ -138,11 +147,11 @@ Use the following context sections to build the full report. For each section, a
 
 ---
 
-### 9. Fundraising
+### 8. Fundraising
 **Content:**
 - {fundraising_section}
 **Presentation Style:**
-- **Narrative:** An overview of the fundraising strategy, trends, and key successes over the period {start_year}-{end_year} (250-350 words).
+- **Narrative:** An overview of the fundraising strategy, explicitly detailing the **year-over-year trends**, successes, and challenges from {start_year} to {end_year} (250-350 words).
 - **Data Visualization:**
     - Use a **Bar Chart** to show fundraising growth year-on-year.
     - Use a **Donut Chart** to show the average breakdown of funding sources over the period.
@@ -150,7 +159,7 @@ Use the following context sections to build the full report. For each section, a
 
 ---
 
-### 10. Strategic Partnerships
+### 9. Strategic Partnerships
 **Content:**
 - {stakeholders_section: from_prompt('markdown/stakeholders.md')}
 **Presentation Style:**
@@ -162,7 +171,7 @@ Use the following context sections to build the full report. For each section, a
 
 ---
 
-### 11. Compliance Information
+### 10. Compliance Information
 **Content:**
 - {compliance_section: from_prompt('markdown/compliances.md')}
 **Presentation Style:**
@@ -172,7 +181,7 @@ Use the following context sections to build the full report. For each section, a
 
 ---
 
-### 12. Looking Ahead & Call to Action
+### 11. Looking Ahead & Call to Action
 **Content:**
 - A forward-looking statement based on the overall context.
 **Presentation Style:**
@@ -182,7 +191,7 @@ Use the following context sections to build the full report. For each section, a
 
 ---
 
-### 13. Back Cover Page
+### 12. Back Cover Page
 **Content:**
 - {back_cover_page}
 - Contact information and website URL.
