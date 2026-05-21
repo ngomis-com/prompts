@@ -23,6 +23,12 @@ You will receive the following details. `organization_context` refers to the *of
     *   `{opportunity_selection_process_text}`: (Optional) Overview of application review and selection.
     *   `{opportunity_reporting_requirements_text}`: (Optional) Reporting expectations for recipients.
 
+*   **Opportunity Call Details:**
+    *   `{opportunity_call_type}`: The type of call (e.g., "One-Time", "Annual", "Rolling", "Open-Ended"). This should correspond to one of the CallType enum values.
+    *   `{opportunity_call_financial_year}`: The financial year applicable to this call (e.g., "FY 2025-26").
+    *   `{opportunity_call_round}`: The round or cycle number of this call (e.g., "Round 1", "Cycle 2").
+    *   `{opportunity_call_previous_call_summary}`: (Optional) Summary of the previous call or cycle, including learnings, outcomes, or changes made in the current call.
+
 *   **Offering Organization's Context (derived from `AboutUsContext` and `OrganizationFactsheetContext`):**
     *   `{funder_organization_name}`: The name of the organization offering the opportunity.
     *   `{funder_organization_type}`: (NEW) The type of the offering entity (e.g., "psb-csr", "foundation-domestic", "dfi", "impact-fund"). This helps confirm the context.
@@ -50,6 +56,7 @@ You will receive the following details. `organization_context` refers to the *of
     *   `## Introduction` (using `{opportunity_introduction}`)
     *   `## About {funder_organization_name}` (incorporate `{funder_mission}`, `{funder_website}`, `{funder_history_summary}`, `{funder_year_founded}`, `{funder_key_issues_addressed_list}`, `{funder_achievements_summary}` to provide a comprehensive overview of the offering organization)
     *   `## Type of Opportunity: {opportunity_type_name}` (NEW SECTION - using `{opportunity_type_description}`)
+    *   `## Opportunity Call` (using `{opportunity_call_type}`, `{opportunity_call_financial_year}`, `{opportunity_call_round}`, and optionally `{opportunity_call_previous_call_summary}`)
     *   `## Objectives` (listing from `{opportunity_objectives_list}`)
     *   `## Focus Areas`
         *   `### Social Impact Areas` (listing from `{opportunity_thematic_areas_list}`)
@@ -91,6 +98,12 @@ You will receive the following details. `organization_context` refers to the *of
 ## Type of Opportunity: {opportunity_type_name}
 {opportunity_type_description}
 *(Example: This call is categorized as a Project-Restricted Grant. Funds awarded must be used for specific projects with clearly defined objectives, deliverables, and budgets. The use of funds is limited to the agreed project expenses, and recipients must report on project outcomes.)*
+
+## Opportunity Call
+*   **Call Type:** {opportunity_call_type} *(e.g., Annual/Rolling/One-Time/Open-Ended)*
+*   **Financial Year:** {opportunity_call_financial_year} *(e.g., FY 2025-26)*
+*   **Call Round:** {opportunity_call_round} *(e.g., Round 1/Cycle 2)*
+*(Optional: If `{opportunity_call_previous_call_summary}` is provided, include it as a brief paragraph about the previous call.)*
 
 ## Objectives
 *   Objective 1 from {opportunity_objectives_list}
@@ -182,6 +195,10 @@ Generate the Opportunity Announcement in Markdown format using the following det
 *   **Opportunity Application Procedure (Text):** `{opportunity_application_procedure_text}`
 *   **Opportunity Selection Process (Optional Text):** `{opportunity_selection_process_text}`
 *   **Opportunity Reporting Requirements (Optional Text):** `{opportunity_reporting_requirements_text}`
+*   **Opportunity Call - Call Type:** `{opportunity_call_type}` (e.g., "One-Time", "Annual", "Rolling", "Open-Ended")
+*   **Opportunity Call - Financial Year:** `{opportunity_call_financial_year}` (e.g., "FY 2025-26")
+*   **Opportunity Call - Call Round:** `{opportunity_call_round}` (e.g., "Round 1", "Cycle 2")
+*   **Opportunity Call - Previous Call Summary (Optional Text):** `{opportunity_call_previous_call_summary}` (Summary of the previous call, learnings, and changes)
 *   **Offering Organization - Name:** `{funder_organization_name}` (from AboutUsContext)
 *   **Offering Organization - Mission:** `{funder_mission}` (from AboutUsContext)
 *   **Offering Organization - Website:** `{funder_website}` (from AboutUsContext)
