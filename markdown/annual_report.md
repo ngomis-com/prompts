@@ -20,6 +20,91 @@
 
 ---
 
+**Input Context Variables:**
+You will receive the following details corresponding to the `AnnualReportContext` model. Each section variable is represented as an NGOMIS Concept from the `resources/publications/annual-report` taxonomy. The object should include the concept metadata required by the agent for semantic reasoning.
+
+*   `{cover_page_section}`: The cover page content for the annual report, represented as an NGOMIS Concept from the `resources/publications/annual-report/cover-page` taxonomy.
+    Example:
+    ```yaml
+    cover_page_section:
+      concept_id: ngomis.resources.publications.annual-report.cover-page
+      preferred_label: Cover Page
+      definition: The introductory page of a publication containing the title, organization name, year, and visual branding.
+      broader:
+        concept_id: annual-report
+        preferred_label: Annual Report (Publication)
+      synonyms:
+        - Front Cover
+        - Title Page
+    ```
+*   `{message_from_head}`: The message from the head of the organization, represented as an NGOMIS Concept from the `resources/publications/annual-report/message-from-the-head` taxonomy.
+    Example:
+    ```yaml
+    message_from_head:
+      concept_id: ngomis.resources.publications.annual-report.message-from-the-head
+      preferred_label: Message from the Head of the Organization
+      definition: A personal, inspiring message from the head of the organization setting the tone for the publication.
+      broader:
+        concept_id: annual-report
+        preferred_label: Annual Report (Publication)
+      synonyms:
+        - CEO Message
+        - Letter from the Director
+    ```
+*   `{table_of_contents_section}`: The table of contents for the report, represented as an NGOMIS Concept from the `resources/publications/annual-report/table-of-contents` taxonomy.
+    Example:
+    ```yaml
+    table_of_contents_section:
+      concept_id: ngomis.resources.publications.annual-report.table-of-contents
+      preferred_label: Table of Contents
+      definition: A structured list of sections and page numbers for navigation within the publication.
+      broader:
+        concept_id: annual-report
+        preferred_label: Annual Report (Publication)
+      synonyms:
+        - Contents
+        - Index
+    ```
+*   `{about_us_section}`: The organization profile section populated from the About Us prompt, represented as an NGOMIS Concept from the `resources/publications/annual-report/organization-profile` taxonomy. The object should include the concept metadata required by the agent for semantic reasoning.
+    Example:
+    ```yaml
+    about_us_section:
+      concept_id: ngomis.resources.publications.annual-report.organization-profile
+      preferred_label: Organization Profile
+      definition: An overview of the organization including its history, mission, vision, and core values.
+      broader:
+        concept_id: annual-report
+        preferred_label: Annual Report (Publication)
+      synonyms:
+        - About Us
+        - Organizational Overview
+    ```
+*   `{impact_areas_section}`: The social impact and projects section populated from the Social Impact Areas prompt, represented as an NGOMIS Concept from the `resources/publications/annual-report/programs-and-projects` taxonomy.
+*   `{projects_table}`: The projects overview section populated from the Projects prompt.
+*   `{financial_summary}`: The financial overview section populated from the Organizational Financial Report prompt, represented as an NGOMIS Concept from the `resources/publications/annual-report/financial-overview` taxonomy.
+*   `{team_section}`: The people and governance section populated from the Teams prompt, represented as an NGOMIS Concept from the `resources/publications/annual-report/governance` taxonomy.
+*   `{fundraising_section}`: The fundraising section content, represented as an NGOMIS Concept from the `resources/publications/annual-report/fundraising` taxonomy.
+    Example:
+    ```yaml
+    fundraising_section:
+      concept_id: ngomis.resources.publications.annual-report.fundraising
+      preferred_label: Fundraising
+      definition: An overview of fundraising strategy, challenges, and successes highlighting financial resource mobilization.
+      broader:
+        concept_id: annual-report
+        preferred_label: Annual Report (Publication)
+      synonyms:
+        - Resource Mobilization
+        - Development
+    ```
+*   `{stakeholders_section}`: The strategic partnerships section populated from the Stakeholders prompt, represented as an NGOMIS Concept from the `resources/publications/annual-report/partnerships` taxonomy.
+*   `{compliance_section}`: The compliance information section populated from the Compliances prompt.
+*   `{head_of_organization_name}`: The name of the head of the organization.
+*   `{organization_name}`: The primary name of the organization.
+*   `{year}`: The reporting year.
+
+---
+
 **Report Structure and Content Generation:**
 
 Use the following context sections to build the full report. For each section, adhere to the specified presentation style and content guidelines.
@@ -183,3 +268,82 @@ Use the following context sections to build the full report. For each section, a
 ---
 
 Generate the full report structure in Markdown, incorporating these sections and adding relevant introductory/concluding remarks, highlights, and future plans based on the overall context provided.
+
+
+---
+# User Input Data
+
+Generate the "Annual Report" section in Markdown format using the following details. Follow the instructions provided above.
+
+**Report Details:**
+
+*   **Cover Page (NGOMIS Concept):**
+    ```yaml
+    cover_page_section:
+      concept_id: ngomis.resources.publications.annual-report.cover-page
+      preferred_label: Cover Page
+      definition: The introductory page of a publication containing the title, organization name, year, and visual branding.
+      broader:
+        concept_id: annual-report
+        preferred_label: Annual Report (Publication)
+      synonyms:
+        - Front Cover
+    ```
+*   **Message from the Head (NGOMIS Concept):**
+    ```yaml
+    message_from_head:
+      concept_id: ngomis.resources.publications.annual-report.message-from-the-head
+      preferred_label: Message from the Head of the Organization
+      definition: A personal, inspiring message from the head of the organization setting the tone for the publication.
+      broader:
+        concept_id: annual-report
+        preferred_label: Annual Report (Publication)
+      synonyms:
+        - CEO Message
+    ```
+*   **Table of Contents (NGOMIS Concept):**
+    ```yaml
+    table_of_contents_section:
+      concept_id: ngomis.resources.publications.annual-report.table-of-contents
+      preferred_label: Table of Contents
+      definition: A structured list of sections and page numbers for navigation within the publication.
+      broader:
+        concept_id: annual-report
+        preferred_label: Annual Report (Publication)
+      synonyms:
+        - Contents
+    ```
+*   **Organization Profile (NGOMIS Concept):**
+    ```yaml
+    about_us_section:
+      concept_id: ngomis.resources.publications.annual-report.organization-profile
+      preferred_label: Organization Profile
+      definition: An overview of the organization including its history, mission, vision, and core values.
+      broader:
+        concept_id: annual-report
+        preferred_label: Annual Report (Publication)
+      synonyms:
+        - About Us
+    ```
+*   **Fundraising (NGOMIS Concept):**
+    ```yaml
+    fundraising_section:
+      concept_id: ngomis.resources.publications.annual-report.fundraising
+      preferred_label: Fundraising
+      definition: An overview of fundraising strategy, challenges, and successes highlighting financial resource mobilization.
+      broader:
+        concept_id: annual-report
+        preferred_label: Annual Report (Publication)
+      synonyms:
+        - Resource Mobilization
+    ```
+*   **Organization Name:** {organization_name}
+*   **Head of Organization Name:** {head_of_organization_name}
+*   **Reporting Year:** {year}
+*   **Related Sections (populated from respective prompts):**
+    *   Social Impact Areas: `from_prompt('markdown/social_impact_areas.md')`
+    *   Projects: `from_prompt('markdown/projects.md')`
+    *   Financial Summary: `from_prompt('markdown/organizational_financial_report.md')`
+    *   Team & Governance: `from_prompt('markdown/teams.md')`
+    *   Strategic Partnerships: `from_prompt('markdown/stakeholders.md')`
+    *   Compliance: `from_prompt('markdown/compliances.md')`

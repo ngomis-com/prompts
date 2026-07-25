@@ -36,38 +36,211 @@ You are an expert assistant tasked with generating a comprehensive Project Repor
 
 **Input Context Variables (Examples - specific to the project, based on ENHANCING-INCOMES.md/SANCHAY.md):**
 
-*   `project_name`: The name of the Project (e.g., "[Project Title]").
-*   `organization_name`: The name of the implementing NGO (e.g., "[Organization Name]").
-*   `reporting_period`: Optional reporting period (e.g., "[Start Date] - [End Date]").
-*   `project_goal`: High-level aim of the project.
-    *   *Example:* "[A clear, concise statement of the project's ultimate goal]."
-*   `project_factsheet`: Context to build the factsheet table (Location, Phase, Period, Target, Budget, Funder, Timelines, Impact Areas, SDGs, etc.).
-    *   *Example Data Points:* Location: [Block Name]; Target: [Number] families; Villages: [Number]; Funder: [Funder Name]; Impact Areas: [Area 1], [Area 2].
-*   `project_stakeholders`: List or description of key stakeholders.
-    *   *Example:* "Donor: [Funder Name]; Community: [Community Group]; Government: [Government Body]; Implementing Partner: [Partner Name]".
-*   `project_objectives`: Detailed list of specific project objectives.
-    *   *Example:* "To [Objective 1]...", "To [Objective 2]...".
-*   `problem_statement`: Narrative describing the context and problem addressed.
-    *   *Example:* "[A description of the socio-economic and environmental context of the project area and the specific problems the project aims to solve]."
-*   `implementation_approach`: Detailed description of the project's strategies.
-    *   *Example:* "Strategy 1: [Name of Strategy 1]... Strategy 2: [Name of Strategy 2]...".
-*   `m_and_e_details`: Information on target beneficiaries and baseline assessment.
-    *   *Example:* "Target: [Number] families; A baseline was conducted to assess the initial conditions...".
-*   `location_details`: Specific geographical information.
-    *   *Example:* "State: [State Name]; District: [District Name]; Block: [Block Name]; Villages: [Number]".
-*   `activities_achievements`: Detailed reporting on activities undertaken and results achieved, often structured by strategy/component. Include quantitative data where possible.
-    *   *Example:* "Strategy 1: [Number] of [items] were created... Strategy 2: [Number] of participants attended [event]...".
+---
+
+## Project Identity
+
+*   `project_name`: The official name and naming variants of the project. Uses the `entities/projects/project-name` taxonomy concept which defines naming variants including brand name, short name, and abbreviation. The actual value is plain text.
+
+    Example:
+    ```yaml
+    project_name:
+      official_name: "Climate Resilient Agriculture and Livelihood Enhancement Project"
+      brand_name: "CRALE"
+      short_name: "Climate Agriculture Project"
+      abbreviation: "CRALE"
+    ```
+
+*   `project_type`: The type of project, represented as an NGOMIS Concept from the `entities/projects/project-types` taxonomy.
+    Example:
+    ```yaml
+    project_type:
+      concept_id: ngomis.entities.projects.project-types.livelihood-project
+      preferred_label: Livelihood Project
+      definition: A project focused on improving livelihoods and income generation.
+      broader:
+        concept_id: project-types
+        preferred_label: Project Types
+    ```
+
+*   `project_stage`: Current lifecycle stage of the project, represented as an NGOMIS Concept from the `stages/project` taxonomy.
+    Example:
+    ```yaml
+    project_stage:
+      concept_id: ngomis.stages.project.implementation
+      preferred_label: Implementation
+      definition: The phase during which planned activities are executed and deliverables are produced.
+      broader:
+        concept_id: project
+        preferred_label: Project Stages
+    ```
+
+*   `project_themes`: A list of thematic concepts associated with the project. Each item should reference an NGOMIS thematic concept (e.g., SDGs, India CSR Schedule VII, Organization Themes, Sector Themes).
+    Example:
+    ```yaml
+    project_themes:
+      - concept_id: ngomis.activities.sustainable-development.sdg-13.climate-action
+        preferred_label: Climate Action
+      - concept_id: ngomis.activities.india-csr.schedule-vii.rural-development
+        preferred_label: Rural Development
+      - concept_id: ngomis.activities.agriculture.climate-smart-agriculture
+        preferred_label: Climate-Smart Agriculture
+    ```
+
+*   `project_stakeholders`: A structured list of stakeholders. Each stakeholder references an NGOMIS Organization or Group concept together with its role.
+    Example:
+    ```yaml
+    project_stakeholders:
+      - role:
+          concept_id: ngomis.activities.relationship-management.relationship-type.funder
+          preferred_label: Funder
+        organization:
+          name: NABARD
+      - role:
+          concept_id: ngomis.activities.relationship-management.relationship-type.implementing-partner
+          preferred_label: Implementing Partner
+        organization:
+          name: READ India
+      - role:
+          concept_id: ngomis.activities.relationship-management.relationship-type.government-partner
+          preferred_label: Government Partner
+        organization:
+          name: Government of Meghalaya
+          type:
+            concept_id: ngomis.entities.organizations.by-legal-registration.india.government-body
+            preferred_label: Government Body
+    ```
+
+## Narrative Content (Resources → Project Documentation)
+
+The narrative fields below are classified under `resources/project-documentation/` in the NGOMIS taxonomy. Each is a concept describing the type of documentation, while the actual content is provided as plain text.
+
+*   `project_objectives`: List of project-specific objectives. Conceptual type: `resources/project-documentation/project-profile/project-objectives`.
+
+*   `project_goal`: A list of structured goals for the project. Each goal is a four-component record: **Activity** (what), **Beneficiary** (who), **Location** (where), and **Target** (how many). Each dimension references an existing NGOMIS taxonomy — Activities, People/Groups, Locations, and Units respectively. `entities/projects/project-goals` serves as the linking property.
+    Example:
+    ```yaml
+    project_goal:
+      - activity:
+          concept_id: ngomis.activities.agriculture.climate-smart-agriculture
+          preferred_label: Climate-Smart Agriculture
+        beneficiary:
+          concept_id: ngomis.entities.people.smallholder-farmers
+          preferred_label: Smallholder Farmers
+        location:
+          concept_id: ngomis.location.india.meghalaya.west-garo-hills.dadenggre
+          preferred_label: Dadenggre Block
+        target:
+          value: 1000
+          unit:
+            concept_id: ngomis.measure.units.count.farmer
+            preferred_label: Farmer
+      - activity:
+          concept_id: ngomis.activities.capacity-building.training
+          preferred_label: Training
+        beneficiary:
+          concept_id: ngomis.entities.groups.self-help-group
+          preferred_label: Self Help Group (SHG)
+        location:
+          concept_id: ngomis.location.india.assam.kamrup
+          preferred_label: Kamrup
+        target:
+          value: 250
+          unit:
+            concept_id: ngomis.measure.units.count.group
+            preferred_label: Group
+    ```
+
+*   `problem_statement`: Narrative describing the context and problem addressed. Conceptual type: `resources/project-documentation/project-profile/problem-statement`.
+
+*   `implementation_approach`: Detailed description of the project's strategies. Conceptual type: `resources/project-documentation/project-implementation/implementation-approach`.
+
+*   `m_and_e_details`: Information on target beneficiaries and baseline assessment. Conceptual type: `resources/project-documentation/project-implementation/monitoring-and-evaluation`.
+
+*   `activities_achievements`: Detailed reporting on activities undertaken and results achieved. Conceptual type: `resources/project-documentation/project-implementation/activities-and-achievements`.
+
+*   `learnings_challenges`: Narrative describing lessons learned and challenges faced. Conceptual type: `resources/project-documentation/project-learning/lessons-learned-and-challenges`.
+
+*   `success_stories`: Narrative content for case studies/stories. Conceptual type: `resources/project-documentation/project-results/success-stories`.
+
+## Classification Fields
+
+*   `project_locations`: Geographic coverage represented using NGOMIS Location Concepts. Each entry specifies a location URI and its coverage type (from `location/administrative-divisions`).
+    Example:
+    ```yaml
+    project_locations:
+      - location:
+          concept_id: ngomis.location.india.meghalaya
+          preferred_label: Meghalaya
+        coverage_type:
+          concept_id: ngomis.location.administrative-divisions.india.state
+          preferred_label: State
+        settlement_type:
+          concept_id: ngomis.location.settlement-types.rural
+          preferred_label: Rural
+      - location:
+          concept_id: ngomis.location.india.meghalaya.west-garo-hills
+          preferred_label: West Garo Hills
+        coverage_type:
+          concept_id: ngomis.location.administrative-divisions.india.district
+          preferred_label: District
+        settlement_type:
+          concept_id: ngomis.location.settlement-types.rural
+          preferred_label: Rural
+      - location:
+          concept_id: ngomis.location.india.meghalaya.west-garo-hills.dadenggre
+          preferred_label: Dadenggre
+        coverage_type:
+          concept_id: ngomis.location.administrative-divisions.india.block
+          preferred_label: Block
+        settlement_type:
+          concept_id: ngomis.location.settlement-types.rural
+          preferred_label: Rural
+    ```
+
+*   `project_beneficiaries`: List of intended beneficiary groups represented using NGOMIS Entity Concepts.
+    Example:
+    ```yaml
+    project_beneficiaries:
+      - concept_id: ngomis.entities.people.smallholder-farmers
+      - concept_id: ngomis.entities.people.women
+      - concept_id: ngomis.entities.groups.self-help-group
+    ```
+
+*   `project_activities`: List of major project activities represented using NGOMIS Activity Concepts.
+    Example:
+    ```yaml
+    project_activities:
+      - concept_id: ngomis.activities.capacity-building.training
+      - concept_id: ngomis.activities.community-mobilization.awareness-campaign
+      - concept_id: ngomis.activities.agriculture.crop-demonstration
+    ```
+
+*   `project_outcomes`: List of project outcomes represented using NGOMIS Theory of Change concepts.
+    Example:
+    ```yaml
+    project_outcomes:
+      - concept_id: ngomis.activities.theory-of-change.outcomes.increased-income
+      - concept_id: ngomis.activities.theory-of-change.outcomes.improved-food-security
+    ```
+
+*   `project_sdgs`: List of Sustainable Development Goals represented using NGOMIS Concepts.
+
+## Structured Data
+
 *   `financial_milestones`: Data for the financial milestones table.
-    *   *Example:* Table data with Milestone Description, Grant Amount, Request Date, Received Date.
-*   `outcomes_summary`: High-level summary of key achievements.
-    *   *Example:* "[Number] of [items] created... [Percentage]% increase in [metric]...".
-*   `risks_mitigations`: Data for the risks and mitigations table.
-    *   *Example:* Table data with Risk Description, Owner, Status, Probability, Impact, Mitigation Strategy.
-*   `learnings_challenges`: Narrative describing lessons learned and challenges faced.
-    *   *Example:* "[Description of a challenge encountered]... [Description of a key lesson learned]...".
-*   `success_stories`: Narrative content for case studies/stories.
-    *   *Example:* "A case study of [Beneficiary Name] who benefited from [project activity]...".
-*   `photo_references`: Data for the photographs table/list.
-    *   *Example:* Table data with Caption, Month, Associated Milestone/Activity/Outcome, Thematic Area.
+
+*   `project_risks`: Risks classified using NGOMIS Risk Concepts where applicable.
+
+*   `photo_references`: Data for the photographs table/list. Thematic areas should reference NGOMIS concepts.
+    Example:
+    ```yaml
+    photo_references:
+      - caption: "Farmers attending training on climate-smart practices"
+        month: "March 2025"
+        thematic_area:
+          concept_id: ngomis.activities.agriculture.climate-smart-agriculture
+          preferred_label: Climate-Smart Agriculture
+    ```
 
 **Output:** Generate the complete Project Report in Markdown format, incorporating the provided project-specific context variables into the detailed structure outlined above. Ensure rich formatting using headings, lists, tables, etc., as seen in the example reports.

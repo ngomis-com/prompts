@@ -30,6 +30,34 @@ You will receive a JSON string containing a list of project objects.
       }
     ]
     ```
+    
+    **Note on `social_impact_area` field:** The `social_impact_area` values (e.g., "Education", "Healthcare") are NGOMIS Concepts from the `properties/outcomes` taxonomy, represented as structured objects:
+    ```yaml
+    social_impact_area:
+      concept_id: ngomis.properties.outcomes.livelihood-improvement
+      preferred_label: Livelihood Improvement
+      definition: Outcomes related to enhanced livelihood opportunities and sustainable income sources.
+      broader:
+        concept_id: outcomes
+        preferred_label: Outcomes
+      synonyms:
+        - Livelihood Promotion
+        - Sustainable Livelihoods
+    ```
+    
+    **Note on `status` field:** The `status` values (e.g., "Ongoing", "Completed") are NGOMIS Concepts from the `stages/project` taxonomy, represented as structured objects:
+    ```yaml
+    status:
+      concept_id: ngomis.stages.project.implementation
+      preferred_label: Implementation
+      definition: The phase during which planned activities are executed and deliverables are produced.
+      broader:
+        concept_id: project
+        preferred_label: Project Stages
+      synonyms:
+        - Active
+        - In Progress
+    ```
 
 **Instructions:**
 1.  **Create a Markdown Table:** Generate a table with the following columns: "Project Name", "Social Impact Area", "Primary Goal", and "Status".

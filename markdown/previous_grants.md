@@ -14,10 +14,72 @@ You are an expert archival assistant. Your task is to compile a clear and inform
     *   `{grant_title}`: The official title of the past grant.
     *   `{grant_year_awarded_or_completed}`: The year the grant was awarded or completed.
     *   `{grant_summary}`: A brief description of the grant's purpose and scope.
-    *   `{grant_key_outcomes_list}`: (Optional) A list of key achievements or impacts of the funded project.
+    *   `{grant_key_outcomes_list}`: (Optional) A list of key achievements or impacts of the funded project, where each item is an NGOMIS Concept from the `properties/outcomes` taxonomy.
+    Example:
+    ```yaml
+    grant_key_outcomes_list:
+      - concept_id: ngomis.properties.outcomes.livelihood-improvement
+        preferred_label: Livelihood Improvement
+        definition: Outcomes related to enhanced livelihood opportunities and sustainable income sources.
+        broader:
+          concept_id: outcomes
+          preferred_label: Outcomes
+        synonyms:
+          - Livelihood Promotion
+      - concept_id: ngomis.properties.outcomes.gender-equality
+        preferred_label: Gender Equality
+        definition: Outcomes related to reduced gender disparities, women's empowerment, and inclusive development.
+        broader:
+          concept_id: outcomes
+          preferred_label: Outcomes
+        synonyms:
+          - Women Empowerment
+    ```
     *   `{grant_amount_awarded_text}`: (Optional) The funding amount (e.g., "INR 350,000" or "USD 50,000 - USD 75,000").
-    *   `{grant_thematic_areas_list}`: (Optional) List of thematic areas the grant focused on.
-    *   `{grant_geographic_focus_summary}`: (Optional) Geographic area of the grant's impact.
+    *   `{grant_thematic_areas_list}`: (Optional) List of thematic areas the grant focused on, where each item is an NGOMIS Concept from the `properties/outcomes` taxonomy.
+    Example:
+    ```yaml
+    grant_thematic_areas_list:
+      - concept_id: ngomis.properties.outcomes.livelihood-improvement
+        preferred_label: Livelihood Improvement
+        definition: Outcomes related to enhanced livelihood opportunities and sustainable income sources.
+        broader:
+          concept_id: outcomes
+          preferred_label: Outcomes
+        synonyms:
+          - Livelihood Promotion
+      - concept_id: ngomis.properties.outcomes.gender-equality
+        preferred_label: Gender Equality
+        definition: Outcomes related to reduced gender disparities, women's empowerment, and inclusive development.
+        broader:
+          concept_id: outcomes
+          preferred_label: Outcomes
+        synonyms:
+          - Women Empowerment
+    ```
+    *   `{grant_geographic_focus_summary}`: (Optional) Geographic area of the grant's impact, where individual locations are NGOMIS Concepts from the `location` taxonomy.
+    Example:
+    ```yaml
+    grant_geographic_focus_summary:
+      summary: "Grant implemented in rural districts of Odisha, India."
+      locations:
+        - concept_id: ngomis.location.countries.india
+          preferred_label: India
+          definition: A country in South Asia.
+          broader:
+            concept_id: countries
+            preferred_label: Countries
+          synonyms:
+            - Republic of India
+        - concept_id: ngomis.location.subdivisions.india.odisha
+          preferred_label: Odisha
+          definition: A state on the eastern coast of India.
+          broader:
+            concept_id: subdivisions
+            preferred_label: Subdivisions
+          synonyms:
+            - Orissa
+    ```
     *   `{grant_partners_list}`: (Optional) Implementing partners or key collaborators.
     *   `{grant_report_link}`: (Optional) Link to a public report or further details.
 

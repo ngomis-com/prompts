@@ -10,17 +10,93 @@ You are an expert grant assessment analyst. Your task is to evaluate the fitment
     *   `{grant_title}`: The official title of the grant.
     *   `{grant_objectives_list}`: Specific objectives the grant aims to achieve.
     *   `{grant_eligibility_criteria_text}`: Who is eligible to apply.
-    *   `{grant_thematic_areas_list}`: Key thematic areas the grant focuses on.
-    *   `{grant_geographic_focus_summary}`: Primary geographic regions targeted.
+    *   `{grant_thematic_areas_list}`: Key thematic areas the grant focuses on, where each item is an NGOMIS Concept from the `properties/outcomes` taxonomy.
+    Example:
+    ```yaml
+    grant_thematic_areas_list:
+      - concept_id: ngomis.properties.outcomes.education
+        preferred_label: Education
+        definition: Outcomes related to improved access to quality education, learning outcomes, and educational infrastructure.
+        broader:
+          concept_id: outcomes
+          preferred_label: Outcomes
+        synonyms:
+          - Educational Development
+      - concept_id: ngomis.properties.outcomes.healthcare
+        preferred_label: Healthcare
+        definition: Outcomes related to improved health services, access to healthcare, and well-being of communities.
+        broader:
+          concept_id: outcomes
+          preferred_label: Outcomes
+        synonyms:
+          - Health Services
+    ```
+    *   `{grant_geographic_focus_summary}`: Primary geographic regions targeted, where individual locations are NGOMIS Concepts from the `location` taxonomy.
+    Example:
+    ```yaml
+    grant_geographic_focus_summary:
+      summary: "Primary geographic regions targeted by this grant."
+      locations:
+        - concept_id: ngomis.location.countries.india
+          preferred_label: India
+          definition: A country in South Asia.
+          broader:
+            concept_id: countries
+            preferred_label: Countries
+          synonyms:
+            - Republic of India
+    ```
     *   `{grant_funding_range_text}`: (Optional) Available funding range.
     *   `{grant_project_duration_text}`: (Optional) Expected project duration.
 
 *   **Assessing Organization's Context (Your NGO's Details):**
     *   `{assessing_organization_name}`: Your organization's name.
     *   `{assessing_organization_mission}`: Your organization's mission statement.
-    *   `{assessing_organization_key_focus_areas_list}`: List of your organization's primary thematic areas of work.
+    *   `{assessing_organization_key_focus_areas_list}`: List of your organization's primary thematic areas of work, where each item is an NGOMIS Concept from the `properties/outcomes` taxonomy.
+    Example:
+    ```yaml
+    assessing_organization_key_focus_areas_list:
+      - concept_id: ngomis.properties.outcomes.livelihood-improvement
+        preferred_label: Livelihood Improvement
+        definition: Outcomes related to enhanced livelihood opportunities and sustainable income sources.
+        broader:
+          concept_id: outcomes
+          preferred_label: Outcomes
+        synonyms:
+          - Livelihood Promotion
+      - concept_id: ngomis.properties.outcomes.gender-equality
+        preferred_label: Gender Equality
+        definition: Outcomes related to reduced gender disparities, women's empowerment, and inclusive development.
+        broader:
+          concept_id: outcomes
+          preferred_label: Outcomes
+        synonyms:
+          - Women Empowerment
+    ```
     *   `{assessing_organization_typical_project_scale_text}`: Description of the typical scale of projects your organization undertakes (e.g., "Projects typically range from INR 500,000 to INR 2,000,000 over 1-2 years").
-    *   `{assessing_organization_geographic_reach_summary}`: Summary of the geographic areas your organization typically serves.
+    *   `{assessing_organization_geographic_reach_summary}`: Summary of the geographic areas your organization typically serves, where individual locations are NGOMIS Concepts from the `location` taxonomy.
+    Example:
+    ```yaml
+    assessing_organization_geographic_reach_summary:
+      summary: "Organization operates across multiple states in India."
+      locations:
+        - concept_id: ngomis.location.subdivisions.india.odisha
+          preferred_label: Odisha
+          definition: A state on the eastern coast of India.
+          broader:
+            concept_id: subdivisions
+            preferred_label: Subdivisions
+          synonyms:
+            - Orissa
+        - concept_id: ngomis.location.subdivisions.india.maharashtra
+          preferred_label: Maharashtra
+          definition: A state in western India.
+          broader:
+            concept_id: subdivisions
+            preferred_label: Subdivisions
+          synonyms:
+            - Maharashtra State
+    ```
     *   `{assessing_organization_strengths_and_capacity_text}`: Overview of your organization's core strengths, expertise, resources, and capacity.
     *   `{assessing_organization_previous_projects_summary}`: (Optional) Brief summary of relevant past projects undertaken by your organization that demonstrate capability.
 
